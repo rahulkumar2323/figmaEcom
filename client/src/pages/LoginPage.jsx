@@ -57,7 +57,6 @@ export default function LoginPage() {
             className="outline-none border-b border-black text-lg"
             type="email"
             name="email"
-            placeholder="Enter your email address"
           />
         </div>
         <div className="flex flex-col gap-2 mb-8 md:gap-4">
@@ -69,7 +68,6 @@ export default function LoginPage() {
             className="outline-none border-b border-black text-lg"
             type="password"
             name="password"
-            placeholder="Enter your email password"
           />
         </div>
         <div className="flex flex-col items-center gap-5">
