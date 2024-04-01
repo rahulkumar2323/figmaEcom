@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
@@ -22,40 +23,50 @@ export default function App() {
       <SearchTextProvider>
         <TagSortProvider>
           <BrowserRouter>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/products/:id" element={<ProductPage />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route
-                path="/cart"
-                element={
-                  !currentUser ? <Navigate to="/login" replace /> : <CartPage />
-                }
-              />
-              {/* Conditionally render Footer based on route */}
-              <Route path="/" element={<Home />} />{" "}
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/products/:id" element={<ProductPage />} />
-              <Route path="/search" element={<SearchPage />} />
-              <Route
-                path="/cart"
-                element={
-                  !currentUser ? <Navigate to="/login" replace /> : <CartPage />
-                }
-              />
-              <Route path="/success" element={<SuccessPayment />} />
-              <Route path="/cancel" element={<DeclinePayment />} />
-            </Routes>
-            {/* Only render Footer if route doesn't match success or cancel */}
-            {!(
-              window.location.pathname === "/success" ||
-              window.location.pathname === "/cancel"
-            ) && <Footer />}
-            <Toaster position="top-center" />
+            <ScrollToTop>
+              <Navbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/products/:id" element={<ProductPage />} />
+                <Route path="/search" element={<SearchPage />} />
+                <Route
+                  path="/cart"
+                  element={
+                    !currentUser ? (
+                      <Navigate to="/login" replace />
+                    ) : (
+                      <CartPage />
+                    )
+                  }
+                />
+                {/* Conditionally render Footer based on route */}
+                <Route path="/" element={<Home />} />{" "}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/products/:id" element={<ProductPage />} />
+                <Route path="/search" element={<SearchPage />} />
+                <Route
+                  path="/cart"
+                  element={
+                    !currentUser ? (
+                      <Navigate to="/login" replace />
+                    ) : (
+                      <CartPage />
+                    )
+                  }
+                />
+                <Route path="/success" element={<SuccessPayment />} />
+                <Route path="/cancel" element={<DeclinePayment />} />
+              </Routes>
+              {/* Only render Footer if route doesn't match success or cancel */}
+              {!(
+                window.location.pathname === "/success" ||
+                window.location.pathname === "/cancel"
+              ) && <Footer />}
+              <Toaster position="top-center" />
+            </ScrollToTop>
           </BrowserRouter>
         </TagSortProvider>
       </SearchTextProvider>
