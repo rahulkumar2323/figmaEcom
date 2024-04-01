@@ -82,7 +82,6 @@ export default function LoginPage() {
           >
             SIGN IN
           </button>
-          {/* {error && <p className="text-red-500"></p>} */}
           <p>New to The Figma Store?</p>
           <Link
             to="/register"

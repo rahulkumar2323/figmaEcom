@@ -94,7 +94,7 @@ export default function RegisterPage() {
           <input
             onChange={handleChange}
             className="outline-none border-b border-black text-lg"
-            type="text"
+            type="password"
             name="password"
             id="password"
           />

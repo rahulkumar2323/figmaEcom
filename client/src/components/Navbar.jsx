@@ -32,8 +32,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   });
   const cart = useSelector((state) => state.cart);
-  // const user = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <>
       {searchToggle && (
@@ -102,8 +101,19 @@ export default function Navbar() {
           </h1>
         </Link>
         <div className="flex gap-2 md:text-base">
-          <Link to="/login" className="btn">
-            sign up
+          <Link
+            to="/login"
+            className={
+              !currentUser
+                ? "btn"
+                : "border-2 border-black rounded-full px-3 py-1 font-semibold capitalize tracking-wide"
+            }
+          >
+            {currentUser ? (
+              <p>{`Hi ${currentUser.firstName}!`}</p>
+            ) : (
+              <p>sign up</p>
+            )}
           </Link>
           {isAboveMediumScreen ? (
             <Link to="/cart" className="btn">
