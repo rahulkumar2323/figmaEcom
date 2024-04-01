@@ -6,6 +6,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 export default function ProductPage() {
   const dispatch = useDispatch();
@@ -76,6 +77,7 @@ export default function ProductPage() {
         })
       );
     }
+    toast.success("Added to cart");
   };
 
   return (

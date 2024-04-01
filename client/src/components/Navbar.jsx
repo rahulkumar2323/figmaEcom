@@ -19,6 +19,7 @@ export default function Navbar() {
   const [searchText, setSearchText] = useState("");
   const { setSearchTextSubmit } = useContext(SearchTextContext);
   const isAboveMediumScreen = useMediaQuery("(min-width: 1060px)");
+
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
     currentScrollPos > prevScrollPos ? setVisible(false) : setVisible(true);
@@ -31,6 +32,8 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   });
   const cart = useSelector((state) => state.cart);
+  // const user = useSelector((state) => state.user.currentUser);
+  // console.log(user);
   return (
     <>
       {searchToggle && (

@@ -3,14 +3,22 @@ import { removeProduct } from "../redux/cartRedux";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function CartPage() {
+  const [terms, setTerms] = useState({
+    t1: false,
+    t2: false,
+  });
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-  console.log(cart);
 
   // payment integration
   const makePayment = async () => {
+    if (!cart.products.length && !cart.products) {
+      return;
+    }
     try {
       const stripe = await loadStripe(
         "pk_test_51OzLjHSJA1Gz1V0ib0yp7Y1U9r5rCshACYDr84g5raocgCvEX0E6494jrjQmCD4ai4nlfQWJwvAI0zseSxFVtn5P005KIN1H0U"
@@ -61,9 +69,12 @@ export default function CartPage() {
                 <p className="text-2xl font-semibold">{product.title}</p>
               </div>
               <button
-                onClick={() =>
-                  dispatch(removeProduct({ productId: product._id }))
-                }
+                onClick={() => {
+                  dispatch(removeProduct({ productId: product._id }));
+                  toast("Removed", {
+                    icon: "😢",
+                  });
+                }}
                 className="p-2 border-2 border-black rounded-full text-xl font-semibold hover:bg-black hover:text-white duration-200"
               >
                 <RxCross1 />
@@ -83,24 +94,36 @@ export default function CartPage() {
         </div>
         <p className="font-semibold mr-24">UPDATE CART</p>
 
-        <button
-          onClick={makePayment}
-          className="bg-black text-white hover:text-black font-semibold w-full rounded-full py-2 mb-6 md:py-2 border-2 border-white hover:bg-white hover:border-2 hover:border-black duration-300"
-        >
-          CHECKOUT
-        </button>
+        {terms.t1 && terms.t2 ? (
+          <button
+            onClick={makePayment}
+            className="bg-black text-white hover:text-black font-semibold w-full rounded-full py-2 mb-6 md:py-2 border-2 border-white hover:bg-white hover:border-2 hover:border-black duration-300"
+          >
+            CHECKOUT
+          </button>
+        ) : (
+          <button className="bg-gray-500 cursor-not-allowed text-white hover:text-black font-semibold w-full rounded-full py-2 mb-6 md:py-2 border-2 border-white hover:bg-white hover:border-2 hover:border-black duration-300">
+            CHECKOUT
+          </button>
+        )}
 
         <div className="flex flex-col gap-2">
           <small>*Taxes and shipping collected at checkout</small>
           <div className="flex items-start gap-2">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={() => setTerms({ ...terms, t1: !terms.t1 })}
+            />
             <small>
               By ticking this box, you confirm your agreement to our Figma Store
               Terms of Sale
             </small>
           </div>
           <div className="flex items-start gap-2">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={() => setTerms({ ...terms, t2: !terms.t2 })}
+            />
             <small>By ticking this box, you agree to our Privacy Policy</small>
           </div>
           <small className="font-semibold">
