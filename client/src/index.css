@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Whyte";
+    src: url("./fonts/Whyte-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Whyte Inktrap Super";
+    src: url("./fonts/WhyteInktrap-Bold.woff2") format("woff2");
+    font-weight: 100;
+    font-style: normal;
+  }
+}
+
+html {
+  @apply font-whyte;
+}
+
+.btn {
+  @apply border-2 border-black md:px-4 md:py-1 px-2 py-1 uppercase rounded-full font-semibold hover:text-white hover:bg-black duration-500 transition-all text-[0.745rem] md:text-[0.895rem];
+}
+
+.icon {
+  @apply text-lg ml-1 cursor-pointer;
+}
+
+.txt-ico {
+  @apply md:w-10 md:h-10 w-6 h-6;
+}
+
+.grpTxtBlr {
+  @apply group-hover:text-gray-500 transition duration-300;
+}
+
+.svg-cutout {
+  @apply stroke-[5.2px] stroke-black;
+}
+
+#h4 {
+  opacity: 0;
+}
+
+.h4Text {
+  @apply bg-white md:text-[1.575rem] text-[0.585rem] px-2 py-1 rounded-full md:px-5 font-semibold absolute w-fit top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-wrap;
+}
+svg:hover + #h4,
+#h4:hover {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.375s ease;
+}
+
+a {
+  cursor: pointer;
+}
+
+.imgOnHover {
+  opacity: 0;
+}
+
+.imgOnHover:hover {
+  opacity: 1;
+  transition: opacity 0.375s ease;
+}

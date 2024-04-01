@@ -1,0 +1,8 @@
+<svg class="svg-cutout" width="650" height="650" viewBox="0 0 650 650" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <pattern id="90bbe729-77e1-4102-8a5f-533992e3c942" patternUnits="objectBoundingBox" width="1" height="1">
+            <image href="//store.figma.com/cdn/shop/files/figma-store_homepage-hero_07_1000x.jpg?v=1678222214" x="0" y="0" width="100%" height="100%" class="pattern-image" preserveAspectRatio="xMidYMid slice"></image>
+        </pattern>
+    </defs>
+    <rect x="2" y="2" width="646" height="646" rx="103" fill="url(#90bbe729-77e1-4102-8a5f-533992e3c942)"></rect>
+</svg>

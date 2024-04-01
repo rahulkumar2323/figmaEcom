@@ -1,0 +1,8 @@
+<svg class="svg-cutout" width="658" height="658" viewBox="-2 -2 654 654" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <pattern id="65fbfbbc-a231-4efe-8eb0-2632cf674770" patternUnits="objectBoundingBox" width="1" height="1">
+            <image href="//store.figma.com/cdn/shop/files/figma-store_homepage-hero_06_1000x.png?v=1678222396" x="0" y="0" width="100%" height="100%" class="pattern-image" preserveAspectRatio="xMidYMid slice"></image>
+        </pattern>
+    </defs>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M650 0H0V125.496C0 231.179 81.9707 317.718 185.802 325C81.9707 332.282 0 418.821 0 524.504V650H650V524.504C650 418.82 568.029 332.282 464.198 325C568.029 317.718 650 231.179 650 125.496V0Z" fill="url(#65fbfbbc-a231-4efe-8eb0-2632cf674770)"></path>
+</svg>
